@@ -1,0 +1,47 @@
+// Styles for the desktop format (960px+)
+// --------------------------------------
+@import 'base';
+@import 'type';
+
+@import 'wide/menus';
+@import 'wide/full_page_slider';
+@import 'wide/logo_slider';
+@import 'wide/photo_grid';
+@import 'wide/chapter_search';
+
+body {
+  // Make room for the menus at the top or bottom.
+  // @todo Make these variables that are also used to set the menu heights.
+  margin-bottom: 80px;
+  margin-top: 80px;
+}
+
+#logo {
+  position: fixed;
+  margin-right: 35px;
+}
+
+.basic-page, .node-type-chapter {
+  .panel-2col {
+    .panel-col-first {
+      float:left;
+      width:50%;
+      margin-top: 80px;
+      padding: 30px 60px;
+    }
+    .panel-col-last {
+      float:right;
+      width: 50%;
+      margin-top: 80px;
+    }
+  }
+  .basic-page-sidebar {
+    width: 30%;
+    right:0;
+    position: fixed;
+    margin-right: $default-padding*4;
+    a {
+      padding: $really-small-padding $default-padding;
+    }
+  }
+}

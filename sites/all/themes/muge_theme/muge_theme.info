@@ -1,0 +1,9 @@
+name = Muge Theme
+description = Muge Foundation Theme
+package = Drupal 7
+core = 7.x
+
+stylesheets[all][] = stylesheets/global.css
+stylesheets[screen and (min-width: 481px)][] = stylesheets/tablet.css
+stylesheets[screen and (min-width: 769px)][] = stylesheets/wide.css
+stylesheets[screen and (min-width: 1024px)][] = stylesheets/extra-wide.css

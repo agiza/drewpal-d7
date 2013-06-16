@@ -1,0 +1,156 @@
+// Base Full Page Slider styles
+// ----------------------------
+
+// We don't show various page elements on these pages.
+.node-type-full-page-slider {
+
+  #site-name,
+  #breadcrumb,
+  #page-title,
+  .field-name-body,
+  .action-links {
+    display: none;
+  }
+
+}
+
+#field-slider-items-outer-wrapper {
+  position: relative;
+
+  .controls {
+    bottom: 140px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+  }
+
+  .button {
+    @include border-radius();
+
+    background-color: rgba($really-light-grey, 0.7);
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+
+    &.on {
+      background-color: $white;
+    }
+
+  }
+
+}
+
+#field-slider-items-wrapper {
+
+  // swipe.js library requirements
+  // @see https://github.com/bradbirdsall/Swipe
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+  .swipe-wrap {
+    overflow: hidden;
+    position: relative;
+  }
+  .swipe-wrap .field-collection-item-field-slider-items {
+    float: left;
+    width: 100%;
+    position: relative;
+    margin-bottom: 132px;
+  }
+
+  // So that the image scales down at tablet and less wide. Image Style gets
+  // the image to 768px wide for page load reasons, then we scale down more.
+  .responsive-format-image {
+    height: auto;
+    width: 100%;
+    display: block;
+    float: left;
+  }
+
+  // Used only in wide format.
+  .slider-image-thumbnail {
+    display: none;
+  }
+
+  .description {
+    background-color: $charcoal;
+    bottom: -132px;
+    height: 132px;
+    padding-bottom: $default-padding / 2;
+    padding-left: $default-padding;
+    padding-right: $default-padding;
+    padding-top: 5px;
+    position: absolute;
+    width: 100%;
+
+    .field-name-field-slider-title {
+      @include type-with-color(full-page-slider-slide-title, $offwhite);
+      text-transform: uppercase;
+    }
+
+    .slider-body {
+      &,
+      p {
+        @include type-with-color(full-page-slider-slide-body, $offwhite);
+      }
+    }
+
+  }
+
+}
+
+// Partner Widget area
+// -------------------
+.node-type-full-page-slider {
+
+  .partner-widget {
+    background-color: rgba($white, 0.9);
+    padding-bottom: $default-padding;
+    padding-top: $default-padding;
+
+    .field,
+    .tweet {
+      padding-left: $default-padding;
+      padding-right: $default-padding;
+    }
+
+    .field-name-field-partner-widget-title .field-item {
+      @include type(header-4);
+      margin-bottom: $default-padding;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    .field-name-field-partner-widget-body {
+      @include type(body-smaller);
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .tweet {
+      @include type(body-smaller);
+      min-height: 75px;
+      background-image: url(../images/twitter.png);
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+    .flexible-content-area {
+      border-top: 1px solid $really-light-grey;
+      padding-top: $default-padding;
+      margin-top: $default-padding;
+      img {
+        max-width: 75%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+
+  }
+
+  .partner-widget-toggle {
+    display: none;
+  }
+
+}

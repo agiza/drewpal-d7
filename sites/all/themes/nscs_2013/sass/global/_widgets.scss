@@ -1,0 +1,308 @@
+// Global styles for widgets
+// -------------------------
+
+// Document Grid (document grids)
+.document-grid {
+  @include clearfix();
+
+  .document {
+    float: left;
+    margin-right: $default-margin;
+  }
+
+  .file-link {
+    display: block;
+    position: relative;
+  }
+
+  .overlay-image {
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+}
+
+// Job Ticker box
+.job-ticker-box {
+
+  .job-count {
+    @include type(header-2);
+
+    border: 1px solid $really-light-grey;
+    display: inline-block;
+    padding: 8px;
+  }
+
+  .job-title {
+    display: inline-block;
+    padding-left: $default-padding;
+    // Poor man's vertical centering.
+    padding-top: 10px;
+    vertical-align: top;
+  }
+
+}
+
+// Action button shortcode.
+.action-button {
+  text-align: right;
+  background-image: url(../images/repeating-red-texture.jpg);
+  display: inline-block;
+
+  .action-button-link {
+    @include type(action-button);
+  
+    display: block;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-transform: uppercase;
+    &:hover {
+      background-color: rgba($black, 0.12);
+    }
+  }
+}
+
+// The embeddable accordion shortcode.
+.accordion {
+  border-top: 1px solid $really-light-grey;
+
+  // This is the toggleable title.
+  h2 {
+    
+    @include type-with-color(body, $aqua);
+    @include sprites-sprite(plus);
+    @include sprites-sprite-position(plus, 100%, 6px);
+
+    // Prevent headline clicks from highlighting text.
+    @include user-select(none);
+
+    border-bottom: 1px solid $really-light-grey;
+    padding-bottom: 5px;
+    padding-top: 5px;
+
+    &.open {
+      @include sprites-sprite(minus);
+      // This fakes the minus sign to be at the same position as the plus sign.
+      @include sprites-sprite-position(minus, 100%, 12px);
+
+      border-bottom: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+  }
+
+  .body {
+    @include type(body);
+    border-bottom: 1px solid $really-light-grey;
+  }
+
+}
+
+// Social Media Widgets
+#node-social-media-widgets {
+  @include clearfix();
+
+  // Right-align the widgets.
+  #widgets-element-social-widgets {
+    float: right;
+  }
+
+  .widgets-element-horizontal {
+    margin-right: 10px;
+  }
+
+  #widgets-element-socialmedia_facebook-like-button {
+    margin-right: 5px;
+    overflow-x: hidden;
+    // Sadly Facebook adds text to the right of the button we can't get rid of,
+    // so the only way is to set a hard width which won't really work well for
+    // non-English sites.
+    width: 55px;
+  }
+
+}
+
+// Facebook Photo Feed jQuery Plug-in
+// @see nscs_widgets.module
+.facebook-photo-feed {
+
+  // Photo grid styling.
+  .albumThumb, .photoThumb {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    display: inline-block;
+    outline: medium none;
+    padding: 4px;
+    position: relative;
+    vertical-align: bottom;
+  }
+  .albumThumb{
+    margin-bottom:10px;
+  }
+  .albumThumb:hover, .albumThumb:hover .albumThumbWrap {
+    border: 1px solid #3b5998
+  }
+  .albumThumb, .albumThumb i {
+    height: 111px;
+    width: 167px;
+  }
+  .photoThumb, .photoThumb i {
+    height: 120px;
+    width: 161px;
+  }
+  .albumThumbWrap {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    left: 4px;
+    padding: 4px;
+    position: absolute;
+    top: 4px;
+  }
+  .albumThumb i, .photoThumb i {
+    background-color: #EEEEEE;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+  }
+  .albumWrapper, .photoWrapper {
+    float: left;
+    margin: 5px;
+  }
+  .albumWrapper {
+    width:181px;
+  }
+  .albumDetails {
+    width: 186px;
+    padding-top: 7px;
+    padding-bottom: 5px;
+    font-size: 11px;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+  }
+  .albumText a {
+    color: #3B5998;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .albumText a:hover {
+    text-decoration: underline;
+  }
+  .albumCount {
+    color: #808080
+  }
+  .fb-album-footer{
+    color: #808080;
+    font-weight:bold;
+    font-size:10px;
+  }
+  #fb-album-header p{
+    color: #333;
+    font-size:11px;
+  }
+  .fbLink{
+    cursor: pointer;
+  }
+
+}
+
+// Lightbox styles for the image popup. These are appending to the body, so they are not wrapped in anything.
+.node-type-page {
+
+  #jquery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 90;
+    width: 100%;
+    height: 500px;
+  }
+  #jquery-lightbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    text-align: center;
+    line-height: 0;
+  }
+  #jquery-lightbox a img { border: none; }
+  #lightbox-container-image-box {
+    position: relative;
+    background-color: #fff;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+  }
+  #lightbox-container-image { padding: 10px; }
+  #lightbox-loading {
+    position: absolute;
+    top: 40%;
+    left: 0%;
+    height: 25%;
+    width: 100%;
+    text-align: center;
+    line-height: 0;
+  }
+  #lightbox-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+  }
+  #lightbox-container-image-box > #lightbox-nav { left: 0; }
+  #lightbox-nav a { outline: none;}
+  #lightbox-nav-btnPrev, #lightbox-nav-btnNext {
+    width: 49%;
+    height: 100%;
+    zoom: 1;
+    display: block;
+  }
+  #lightbox-nav-btnPrev { 
+    left: 0; 
+    float: left;
+  }
+  #lightbox-nav-btnNext { 
+    right: 0; 
+    float: right;
+  }
+  #lightbox-container-image-data-box {
+    font: 10px Verdana, Helvetica, sans-serif;
+    background-color: #fff;
+    margin: 0 auto;
+    line-height: 1.4em;
+    overflow: auto;
+    width: 100%;
+    padding: 0 10px 0;
+  }
+  #lightbox-container-image-data {
+    padding: 0 10px; 
+    color: #666; 
+  }
+  #lightbox-container-image-data #lightbox-image-details { 
+    width: 70%; 
+    float: left; 
+    text-align: left; 
+  } 
+  #lightbox-image-details-caption { font-weight: bold; }
+  #lightbox-image-details-currentNumber {
+    display: block; 
+    clear: left; 
+    padding-bottom: 1.0em;  
+  }     
+  #lightbox-secNav-btnClose {
+    width: 66px; 
+    float: right;
+    padding-bottom: 0.7em;  
+  }
+  
+}

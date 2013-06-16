@@ -1,0 +1,266 @@
+// Styles used on every page of the site
+// -------------------------------------
+@import 'base';
+@import 'type';
+@import 'mixins';
+
+// Box model sanity.
+* { @include box-sizing(border-box); }
+
+@import "global/overrides";
+@import "compass/reset";
+@import "global/menus";
+@import "global/full_page_slider";
+@import "global/logo_slider";
+@import "global/photo_grid";
+@import "global/chapter_search";
+@import "global/widgets";
+@import "global/selectBoxIt";
+
+// Misc Global Styles
+// ------------------
+html {
+  -webkit-font-smoothing: antialiased;
+  @include type(body);
+}
+
+a {
+  text-decoration: none;
+}
+
+b, strong {
+  font-weight: bold;
+}
+
+i, em {
+  font-style: italic;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: $really-light-grey;
+  margin: 20px 0;
+}
+
+u { text-decoration: underline; }
+
+s { text-decoration: strike-through; }
+
+h1 {
+  @include type(header-1);
+}
+
+#logo {
+  @include sprites-sprite(nscs-logo);
+  position: absolute;
+  top: -12px;
+  @include transition-property(top);
+  @include transition-duration(0.8s);
+  right: $default-padding;
+  z-index: 9000;
+  display: block;
+  height: sprites-sprite-height(nscs-logo);
+  width: sprites-sprite-width(nscs-logo);
+  &:hover {
+    top: 0;
+  }
+}
+
+// Hide site name for mobile
+#site-name {
+  display: none;
+}
+
+#page-title {
+  @include type(header-1);
+}
+
+.region-content {
+
+  a {
+    color: $aqua;
+  }
+
+  p {
+    margin-bottom: 1em;
+  }
+
+}
+
+// Full page images for page background.
+#page-background {
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+  z-index: -100;
+
+  #page-background-image {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    margin: auto; 
+    min-width: 50%;
+    min-height: 50%;
+  }
+
+}
+
+// Container used for the photo grid template.
+#sidebar-fly-in {
+  display: none;
+}
+
+// Sassified default tab styles, imported from system.menus.css so that we can
+// disable that file and avoid unwanted menu styles.
+ul.tabs {
+  &.primary {
+    border-bottom: 1px solid $light-grey;
+    border-collapse: collapse;
+    height: auto;
+    line-height: normal;
+    list-style: none;
+    margin: 5px;
+    padding: 0 0 0 1em; /* LTR */
+    white-space: nowrap;
+    li {
+      display: inline;
+      a {
+        background-color: $really-light-grey;
+        border-color: $light-grey;
+        border-style: solid solid none solid;
+        border-width: 1px;
+        height: auto;
+        margin-right: 0.5em; /* LTR */
+        padding: 0 1em;
+        text-decoration: none;
+        &:hover {
+          background-color: $offwhite;
+          border-color: $really-light-grey;
+          border-bottom-color: $offwhite;
+        }
+      }
+      &.active a {
+        background-color: $white;
+        border: 1px solid $light-grey;
+        border-bottom: 1px solid $white;
+      }
+    }
+  }
+  
+  &.secondary {
+    border-bottom: 1px solid $light-grey;
+    padding: 0.5em 1em;
+    margin: 5px;
+    li {
+      border-right: 1px solid $really-light-grey; /* LTR */
+      display: inline;
+      padding: 0 1em;
+    }
+    a {
+      padding: 0;
+      text-decoration: none;
+      &.active {
+        border-bottom: 4px solid $grey;
+      }
+    }
+  }
+}
+
+.basic-page, .node-type-chapter {
+  @include type(body-long-text);
+  .panel-2col {
+    .panel-col-first {
+      background: rgba($white,0.9);
+      padding: 60px 20px;
+      .pane-title {
+        @include type(header-2);
+        text-transform: uppercase;
+        padding-bottom: $default-padding;
+      }
+      float:none;
+      width:100%;
+      .inside {
+        margin: 0;
+        padding: 0;
+        .field-name-body {
+          p>img {
+            margin: 10px;
+          }
+        }
+        form {
+          label {
+            @include type(form-label);
+            text-transform: uppercase;
+            display: block;
+          }
+          input[type=text], select {
+            color: $light-grey;
+            padding: 5px;
+            border: 1px solid $really-light-grey;
+            display: block;
+            width: 100%;
+            font-size: 16px;
+            margin-bottom: 5px;
+          }
+          .action-button {
+              margin-top: 10px;
+              float: right;
+            .action-button-link {
+              background-color: transparent;
+              border: 0;
+            }
+          }
+        }
+      }
+      h3 {
+        @include type-with-color(header-3, $red);
+        text-transform: uppercase;
+      }
+    }
+    .panel-col-last {
+      float:none;
+      width: 100%;
+      .inside {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+  .basic-page-sidebar {
+    background: rgba($black,0.7);
+    
+    a {
+      @include type-with-color(main-menu, $white);
+      text-transform: uppercase;
+      display: block;
+      padding: $really-small-padding $default-padding*4;
+      border-bottom: 1px solid rgba($light-grey, 0.20);
+      border-top: 1px solid rgba($charcoal, 0.46);
+      font-weight: normal;
+      &:hover, &.active-trail {
+        color: $aqua;
+      }
+    }
+    li > a {
+      &:hover, &.active-trail {
+        &:before {
+          content: '> ';
+        }
+      }
+    }
+    h3 > a {
+      font-size: 24px;
+    }
+  }
+}
+
+// Remove the devel tab from showing for anonymous users.
+// @todo Remove this at launch.
+.not-logged-in.page-node #content .tabs {
+  display: none;
+}

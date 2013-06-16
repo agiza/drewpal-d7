@@ -1,0 +1,19 @@
+.sprites-sprite {
+  background: url('../images/sprites-s5cfbcb8d62.png') no-repeat; }
+
+#main-menu {
+  width: 50%;
+  float: left; }
+
+#utility-menu {
+  width: 50%;
+  float: left; }
+
+body.node-type-logo-slider .field-collection-container .current-description .description {
+  position: relative;
+  width: 384px; }
+
+.node-type-photo-grid #page-title {
+  padding-left: 20px; }
+.node-type-photo-grid #page-description {
+  padding-left: 20px; }

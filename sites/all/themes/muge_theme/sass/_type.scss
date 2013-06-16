@@ -1,0 +1,156 @@
+// Type Styles
+// -----------
+
+// Use this to set the typeface. Use type-with-color() if you need to override
+// the default color set here.
+@mixin type($type) {
+  
+  @if $type == header-1 {
+    @include _type(sans-regular);
+    color: $red;
+    font-size: 45px;
+    line-height: 45px;
+  }
+
+  @if $type == header-2 {
+    @include _type(sans-regular);
+    color: $red;
+    font-size: 30px;
+    line-height: 30px;
+  }
+
+  @if $type == header-3 {
+    @include _type(sans-regular);
+    color: $red;
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  @if $type == header-4 {
+    @include _type(sans-regular);
+    color: $red;
+    font-size: 18px;
+    line-height: 18px;
+  }
+
+  @if $type == header-5 {
+    @include _type(serif);
+    color: $grey;
+    font-size: 18px;
+    line-height: 18px;
+
+    a {
+      font-style: italic;
+    }
+  }
+
+  @if $type == header-6 {
+    @include _type(serif);
+    color: $grey;
+    font-size: 16px;
+    line-height: 16px;
+
+    a {
+      font-style: italic;
+    }
+  }
+
+  @if $type == body {
+    color: $grey;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    @include _type(serif);
+  }
+
+  @if $type == body-long-text {
+    color: $grey;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    @include _type(serif);
+  }
+
+  @if $type == body-smaller {
+    color: $grey;
+    font-size: $base-font-size - 2px;
+    line-height: $base-line-height - 6px;
+    @include _type(serif);
+  }
+
+  @if $type == body-tall {
+    color: $grey;
+    font-size: $base-font-size;
+    line-height: ($base-font-size + 6px) * $base-line-height-scalar;
+    @include _type(serif);
+  }
+
+  @if $type == photo-grid-tabs {
+    color: $white;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    @include _type(sans-regular);
+  }
+
+  @if $type == full-page-slider-slide-body {
+    color: $grey;
+    font-size: $base-font-size - 2px;
+    line-height: $base-line-height - 6px;
+    @include _type(serif);
+  }
+
+  @if $type == full-page-slider-slide-title {
+    @include _type(sans-regular);
+    color: $red;
+    font-size: 30px;
+    line-height: 30px;
+  }
+
+  @if $type == utility-menu {
+    color: $grey;
+    font-size: 18px;
+    line-height: 18px;
+
+    @include _type(sans-regular);
+  }
+  
+  @if $type == main-menu {
+    color: $white;
+    font-size: 18px;
+    line-height: 18px;
+
+    @include _type(sans-regular);
+  }
+
+  @if $type == action-button {
+    color: $white;
+    font-size: $base-font-size;
+
+    @include _type(sans-regular);
+  }
+
+  @if $type == form-label {
+    color: $aqua;
+    font-size: $base-font-size;
+
+    @include _type(sans-regular);
+  }
+
+}
+
+// Use this mixin to override the default color defined in type().
+@mixin type-with-color($type, $color) {
+  @include type($type);
+  color: $color;
+}
+
+// Don't call this directly, call type() instead.
+@mixin _type($type) {
+
+  @if $type == sans-regular {
+    font-family: "nimbus-sans-condensed", sans-serif;
+  }
+
+  @if $type == serif {
+    font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  }
+
+}

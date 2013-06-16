@@ -1,0 +1,165 @@
+// Full Page Slider Styles
+// -----------------------
+
+// Undo the positioning needed for the mobile/tablet controls.
+#field-slider-items-outer-wrapper {
+  position: static;
+  .controls {
+    display: none;
+  }
+}
+
+// Format the full page slider itself.
+#field-slider-items-wrapper {
+  // Sadly we have to hard set some dimensions on divs to match the thumbnail.
+  $image-width: 129px;
+  $image-height: 108px;
+  $description-width: 380px;
+
+  // If we leave this as relative as set in global, the divs with the
+  // background images won't be able to break out.
+  position: static;
+  overflow: visible;
+  visibility: visible;
+  .swipe-wrap {
+    overflow: visible;
+    position: static;
+  }
+  .swipe-wrap .field-collection-item-field-slider-items {
+    float: none;
+    width: inherit;
+    position: relative;
+    height: $image-height + 4px;
+    margin-bottom: 4px;
+  }
+
+  // These containers store the background images used for the Full Page Slider.
+  .background-image {
+    display: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    // We stack the z-index in our JS.
+    z-index: -100;
+  }
+
+  .background-image {
+    position: fixed; 
+    top: -50%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%;
+    z-index: -100;
+
+    img {
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      bottom: 0; 
+      margin: auto; 
+      min-width: 50%;
+      min-height: 50%;
+    }
+
+  }
+
+  .entity {
+    @include clearfix();
+
+    margin-bottom: 3px;
+  }
+
+  .image {
+    @include box-shadow($grey, 5px, 5px, 5px);
+
+    float: left;
+    border-bottom: 2px solid $white;
+    border-right: 2px solid $white;
+    border-top: 2px solid $white;
+    // The grayscale JS library we use does some CSS vodoo.
+    height: $image-height + 4px;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 5;
+    &:hover {
+      cursor: pointer;
+    }
+
+    .slider-image-thumbnail {
+      display: block;
+    }
+  }
+
+  .description {
+    display: block;
+    position: absolute;
+    // Imagecache size of the left image plus border from the image with
+    // margin.
+    height: $image-height + 4px;
+    width: $description-width;
+    top:0;
+    left: -251px;
+    z-index: 4;
+    background-color: rgba($black, 0.7);
+  }
+
+  // This is the responsive version of image.
+  .responsive-format-image {
+    display: none;
+  }
+
+}
+
+// Partner Widget area
+// -------------------
+.node-type-full-page-slider {
+
+  .partner-widget {
+    bottom: 80px;
+    position: fixed;
+    right: 50px;
+    width: 200px;
+    z-index: 100;
+  }
+
+  .partner-widget-toggle {
+    z-index: 99;
+    bottom: 92px;
+    display: block;
+    right: 250px;
+    position: fixed;
+    &:hover {
+      cursor: pointer;
+    }
+
+    .plus {
+      display: none;
+      @include sprites-sprite(twitter-expand);
+      width: sprites-sprite-width(twitter-expand) - 12px;
+      height: sprites-sprite-height(twitter-expand);
+      @include transition-property(width);
+      @include transition-duration(0.4s);
+      &:hover {
+          width: sprites-sprite-width(twitter-expand);
+      }
+    }
+
+    .minus {
+      display: block;
+      @include sprites-sprite(twitter-collapse);
+      width: sprites-sprite-width(twitter-collapse) - 12px;
+      height: sprites-sprite-height(twitter-collapse);
+      @include transition-property(width);
+      @include transition-duration(0.4s);
+      &:hover {
+          width: sprites-sprite-width(twitter-collapse);
+      }
+    }
+
+  }
+
+}

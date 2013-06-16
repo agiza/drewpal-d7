@@ -1,0 +1,30 @@
+.node-type-logo-slider {
+  #page-title h1 {
+    margin-left: 60px;
+  }
+  .page-top-area {
+  	padding-top: 100px;
+  }
+  #page-description {
+  	margin-left: 60px;
+  }
+
+  .field-collection-container {
+  	.field-name-field-logos {
+  		.prev-container {
+  			  &:hover .prev{
+            @include sprites-sprite(logo-slider-left-arrow-hover);
+            width:sprites-sprite-width(logo-slider-left-arrow-hover);
+            height: sprites-sprite-height(logo-slider-left-arrow-hover);
+          }
+  		}
+  		.next-container {
+        &:hover .next {
+          @include sprites-sprite(logo-slider-right-arrow-hover);
+          width:sprites-sprite-width(logo-slider-right-arrow-hover);
+          height: sprites-sprite-height(logo-slider-right-arrow-hover);
+        }
+  		}
+  	}
+  }
+}

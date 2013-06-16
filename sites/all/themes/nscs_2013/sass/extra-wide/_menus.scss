@@ -1,0 +1,84 @@
+#main-menu {  
+  &>ul {
+    &>li {
+      &.menu-careers>a {
+        position: relative;
+        padding-left: sprites-sprite-width(menu-icon-careers) + $small-padding;
+        &:before {
+          content:' ';
+          @include sprites-sprite(menu-icon-careers);
+          width: sprites-sprite-width(menu-icon-careers);
+          height: sprites-sprite-height(menu-icon-careers);
+          position: absolute;
+          margin-left: (sprites-sprite-width(menu-icon-careers) + $small-padding) * -1;
+          top: ((sprites-sprite-height(menu-icon-careers) * -1) + 48) / 2;
+        }
+      }
+      &.menu-about>a {
+        position: relative;
+        padding-left: sprites-sprite-width(menu-icon-about) + $small-padding;
+        &:before {
+          content:' ';
+          @include sprites-sprite(menu-icon-about);
+          width: sprites-sprite-width(menu-icon-about);
+          height: sprites-sprite-height(menu-icon-about);
+          position: absolute;
+          margin-left: (sprites-sprite-width(menu-icon-about) + $small-padding) * -1;
+          top: ((sprites-sprite-height(menu-icon-about) * -1) + 48) / 2;
+        }
+      }
+      &.menu-scholarships>a {
+        position: relative;
+        padding-left: sprites-sprite-width(menu-icon-scholarships) + $small-padding;
+        &:before {
+          content:' ';
+          @include sprites-sprite(menu-icon-scholarships);
+          width: sprites-sprite-width(menu-icon-scholarships);
+          height: sprites-sprite-height(menu-icon-scholarships);
+          position: absolute;
+          margin-left: (sprites-sprite-width(menu-icon-scholarships) + $small-padding) * -1;
+          top: ((sprites-sprite-height(menu-icon-scholarships) * -1) + 48) / 2;
+        }
+      }
+      &.menu-benefits>a {
+        position: relative;
+        padding-left: sprites-sprite-width(menu-icon-benefits) + $small-padding;
+        &:before {
+          content:' ';
+          @include sprites-sprite(menu-icon-benefits);
+          width: sprites-sprite-width(menu-icon-benefits);
+          height: sprites-sprite-height(menu-icon-benefits);
+          position: absolute;
+          margin-left: (sprites-sprite-width(menu-icon-benefits) + $small-padding) * -1;
+          top: ((sprites-sprite-height(menu-icon-benefits) * -1) + 48) / 2;
+        }
+      }
+      &.menu-programs>a {
+        position: relative;
+        padding-left: sprites-sprite-width(menu-icon-programs) + $small-padding;
+        &:before {
+          content:' ';
+          @include sprites-sprite(menu-icon-programs);
+          width: sprites-sprite-width(menu-icon-programs);
+          height: sprites-sprite-height(menu-icon-programs);
+          position: absolute;
+          margin-left: (sprites-sprite-width(menu-icon-programs) + $small-padding) * -1;
+          top: ((sprites-sprite-height(menu-icon-programs) * -1) + 48) / 2;
+        }
+      }
+      &.menu-service>a {
+        position: relative;
+        padding-left: sprites-sprite-width(menu-icon-service) + $small-padding;
+        &:before {
+          content:' ';
+          @include sprites-sprite(menu-icon-service);
+          width: sprites-sprite-width(menu-icon-service);
+          height: sprites-sprite-height(menu-icon-service);
+          position: absolute;
+          margin-left: (sprites-sprite-width(menu-icon-service) + $small-padding) * -1;
+          top: ((sprites-sprite-height(menu-icon-service) * -1) + 48) / 2;
+        }
+      }
+    }
+  }
+}

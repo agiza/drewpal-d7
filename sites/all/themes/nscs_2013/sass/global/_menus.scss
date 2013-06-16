@@ -1,0 +1,392 @@
+@import 'base';
+
+// Styles imported from the Flexbox plugin
+/* Flexnav Base Styles */
+.flexnav {
+	@include pie-clearfix;
+	overflow: hidden;
+	margin: 0 auto;
+	width: 100%;
+	max-height: 0;
+	
+	&.show {
+		@include transition(.4s);
+		max-height: 1000px;
+	}
+	
+	li {
+		font-size: 100%;
+		line-height: 100%;
+		position: relative;			
+	}
+	li a {
+		position: relative;
+		z-index: 2;
+		overflow: hidden;
+	}
+	li ul {
+		width: 100%;
+		display: none;
+	}
+	li ul li {
+		float: none;
+		display: block;
+		width: 100%;			
+	}
+	li ul li a {
+		display: block;			
+	}
+	.touch-button {
+		position: absolute;
+		z-index: 999;
+		top: 0;
+		right: 0;
+		width: 50px;
+		height: 50px;
+		display: inline-block;
+		text-align: center;
+		display: none;
+		&:hover {
+			cursor: pointer;
+		}
+		.navicon {
+			position: relative;
+			top: 1.4em;
+			font-size: 12px;
+		}
+	}
+}
+.menu-button {
+	position: relative;
+	display: block;
+	cursor: pointer;
+	
+	.touch-button {
+		background: transparent;
+		position: absolute;
+		z-index: 999;
+		top: 0;
+		right: 0;
+		width: 50px;
+		height: 50px;
+		display: inline-block;
+		text-align: center;
+		display: none;		
+		.navicon {
+			font-size: 16px;
+			position: relative;
+			top: 1em;
+		}
+	}
+}
+
+.oldie {
+	body.one-page {
+		padding-top: 70px;
+	}
+	.flexnav {
+		overflow: visible;
+		max-height: 1000px;
+		li {
+			position: relative;
+			list-style: none;
+			float: left;
+			display: block;
+			min-height: 50px;
+		}
+		li:hover > ul { 
+			visibility: visible;
+			opacity: 1;
+			height: auto;
+			display: block;
+			left: 0;
+			right: 0;
+			bottom: 100%;	
+			position: absolute;
+			
+			li {
+				width: 100%;
+			}
+		}
+		&.lg-screen li:hover > ul,
+		&.sm-screen li:hover > ul {
+			display: none;
+		}
+		li a {
+		}
+		li > ul {
+			position: absolute; 
+			top: auto;
+			left: 0;
+			opacity: 0;
+			visibility: hidden;
+			height: 1px;
+			z-index: 1;	
+		}
+		li ul.open {
+			display: block;
+			opacity: 1;
+			visibility: visible;
+			height: auto;
+		}
+	}
+	.menu-button {
+		display: none;
+	}
+	&.ie7 .flexnav li {
+		width: 19.9%;
+	}
+}
+
+
+.menu-button {
+  @include box-shadow(3px 4px 18px rgba($black,.22));
+  background-color: rgba($white,0.9);
+  text-transform: uppercase;
+  padding-bottom: 8px;
+  @include type(utility-menu);
+  padding-left: sprites-sprite-width(three-paralell-bars)
+   + ($default-padding * 2);
+  padding-top: 8px;
+  z-index: 5000;
+  &:before {
+    content:' ';
+    @include sprites-sprite(three-paralell-bars);
+    width: sprites-sprite-width(three-paralell-bars);
+    height: sprites-sprite-height(three-paralell-bars);
+    position: absolute;
+    left: $default-padding;
+    top: 7px;
+  }
+  &.show:before {
+    @include sprites-sprite(x);
+  }
+}
+
+//override base menu-button color and sprite 
+#toggle-sub-menu {
+  color: $white;
+  background-color: $aqua;
+  //adjust z-index to allow the shadow of the other button to cover it
+  z-index: 4999;
+  &:before {
+    @include sprites-sprite(three-paralell-bars-white);
+  }
+  &.show:before {
+    @include sprites-sprite(x-white);
+  }
+}
+
+#main-menu {
+  text-transform: uppercase;
+  background-color: $charcoal;
+  background-image: url(../images/repeating-gray-texture.jpg);
+  background-attachment: top left; 
+  background-repeat: repeat;
+  li {
+    a,
+    span {
+      border-bottom: 1px solid rgba($black, .26);
+      border-top: 1px solid rgba($really-light-grey, .26);
+      display: block;
+      padding-bottom: 8px;
+      padding-left: $default-margin;
+      padding-top: 8px;
+      @include type(main-menu);
+      &.join-us {
+        background: $red;
+        background-image: url(../images/repeating-red-texture.jpg);
+        background-attachment: top left; 
+        background-repeat: repeat-x;
+        &:hover {
+          @include box-shadow(inset 0 0 100px rgba($black,.4));
+        }
+
+      }
+    }
+  }
+
+  // The handle for sliding the menu up and down
+	.toggle-button {
+  	display: none;
+  }
+ 
+  // A header link that is really a label on the menu.
+  h3 {
+    background-color: $charcoal;
+    border-top: 1px solid $grey;
+    display: block;
+    padding-bottom: 2px;
+    padding-left: $default-padding*2;
+    padding-top: 2px;
+    color: $light-grey;
+    text-transform: none;
+  }
+ 
+}
+
+#sub-menu {
+  text-transform: uppercase;
+  background-color: $aqua;
+  li {
+    a,
+    span {
+      border-top: 1px solid rgba($black, .26);
+      border-bottom: 1px solid rgba($really-light-grey, .26);
+      display: block;
+      padding-bottom: 8px;
+      padding-left: $default-padding * 2;
+      padding-top: 8px;
+      @include type(main-menu);
+      &.join-us {
+        background-color: $red;
+      }
+      &:hover, &.active-trail {
+        color: $dark-aqua;
+      }
+    }
+  }
+ 
+  // A header link that is really a label on the menu.
+  h3 {
+    background-color: $charcoal;
+    border-bottom: 1px solid $grey;
+    border-top: 1px solid $grey;
+    display: block;
+    padding-bottom: 8px;
+    padding-left: $default-padding * 2;
+    padding-top: 8px;
+    color: $light-grey;
+    text-transform: none;
+  }
+ 
+}
+ 
+#utility-menu {
+  background-color: rgba($white,0.9);
+  text-transform: uppercase;
+  border-left: 1px solid rgba($black, .26);
+  border-right: 1px solid rgba($black, .26);
+  // The handle for sliding the menu up and down
+	.toggle-button {
+  	display: none;
+  }
+  
+  li {
+    border-top: 1px solid rgba($black, .26);
+    border-bottom: 1px solid rgba($really-light-grey, .26);
+    a,
+    span {
+      @include type(utility-menu);
+      font-size: 18px;
+      line-height: 18px;
+      display: block;
+      padding-bottom: 8px;
+      padding-left: $default-margin;
+      padding-top: 8px;
+      &:hover, &.active-trail {
+        color: $aqua;
+        background-color: rgba($white, 0.6);
+      }
+    }
+    &>ul {
+      display: block;
+      li {
+        a, span { padding-left: $default-margin*2; }
+      }
+    }
+  }
+
+  .social-icons {
+  	@include pie-clearfix;
+    border-top: 1px solid rgba($black, .26);
+    border-bottom: 1px solid rgba($black, .26);
+  	height: 34px;
+  	text-align: center;
+  	a {
+  		display: inline-block;
+  		height: 100%;
+  		&.facebook {
+        padding: (34 - sprites-sprite-height(menu-icon-facebook))/2 $really-small-padding+2;
+        span {
+          display: block;
+    			@include sprites-sprite(menu-icon-facebook);
+    			width: sprites-sprite-width(menu-icon-facebook);
+    			height: sprites-sprite-height(menu-icon-facebook);
+        }
+  			&:hover span {
+					@include sprites-sprite(menu-icon-facebook-hover);
+					width: sprites-sprite-width(menu-icon-facebook-hover);
+					height: sprites-sprite-height(menu-icon-facebook-hover);
+				}
+  		}
+			&.twitter {
+        padding: (34 - sprites-sprite-height(menu-icon-twitter))/2 $really-small-padding;
+        span {
+          display: block;
+    			@include sprites-sprite(menu-icon-twitter);
+    			width: sprites-sprite-width(menu-icon-twitter);
+    			height: sprites-sprite-height(menu-icon-twitter);
+        }
+  			&:hover span {
+					@include sprites-sprite(menu-icon-twitter-hover);
+					width: sprites-sprite-width(menu-icon-twitter-hover);
+					height: sprites-sprite-height(menu-icon-twitter-hover);
+				}
+  		}
+			&.instagram {
+        padding: (34 - sprites-sprite-height(menu-icon-instagram))/2 $really-small-padding;
+        span {
+          display: block;
+    			@include sprites-sprite(menu-icon-instagram);
+    			width: sprites-sprite-width(menu-icon-instagram);
+    			height: sprites-sprite-height(menu-icon-instagram);
+        }
+  			&:hover span {
+					@include sprites-sprite(menu-icon-instagram-hover);
+					width: sprites-sprite-width(menu-icon-instagram-hover);
+					height: sprites-sprite-height(menu-icon-instagram-hover);
+				}
+  		}
+			&.pinterest {
+        padding: (34 - sprites-sprite-height(menu-icon-pinterest))/2 $really-small-padding;
+        span {
+          display: block;
+    			@include sprites-sprite(menu-icon-pinterest);
+    			width: sprites-sprite-width(menu-icon-pinterest);
+    			height: sprites-sprite-height(menu-icon-pinterest);
+        }
+  			&:hover span {
+					@include sprites-sprite(menu-icon-pinterest-hover);
+					width: sprites-sprite-width(menu-icon-pinterest-hover);
+					height: sprites-sprite-height(menu-icon-pinterest-hover);
+				}
+  		}
+			&.tumblr {
+        padding: (34 - sprites-sprite-height(menu-icon-tumblr))/2 $really-small-padding;
+        span {
+          display: block;
+    			@include sprites-sprite(menu-icon-tumblr);
+    			width: sprites-sprite-width(menu-icon-tumblr);
+    			height: sprites-sprite-height(menu-icon-tumblr);
+        }
+  			&:hover span {
+					@include sprites-sprite(menu-icon-tumblr-hover);
+					width: sprites-sprite-width(menu-icon-tumblr-hover);
+					height: sprites-sprite-height(menu-icon-tumblr-hover);
+				}
+  		}
+  	}
+  }
+ 
+  // A header link that is really a label on the menu.
+  h3 {
+    display: block;
+    padding-bottom: 2px;
+    padding-left: $default-padding*2;
+    padding-top: 2px;
+    color: $light-grey;
+    text-transform: none;
+  }
+ 
+}

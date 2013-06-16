@@ -1,0 +1,326 @@
+// Styles for navigation menus in the desktop layout.
+// --------------------------------------------------
+.flexnav, #utility-menu>ul {
+	overflow: visible;
+	max-height: 1000px;
+			
+	li {
+		position: relative;
+		list-style: none;
+	}
+	li:hover > ul { 
+		visibility: visible;
+		opacity: 1;
+		height: auto;
+		display: block;
+		left: 0;
+		right: 0;
+		bottom: 100%;	
+		position: absolute;	
+	}
+	&.lg-screen li:hover > ul,
+	&.sm-screen li:hover > ul {
+		display: none;
+	}
+	li a {		
+	}
+	li > ul {
+		position: absolute; 
+		top: auto;
+		left: 0;
+		opacity: 0;
+		visibility: hidden;
+		height: 1px;
+    width: 200px;
+		z-index: 9007;			
+	}
+	li ul.open {
+		display: block;
+		opacity: 1;
+		visibility: visible;
+		height: auto;
+
+		/*ul.open {
+			margin-left: 100%;
+			top: 0;
+		}*/
+	}
+	/*ul li:hover ul {
+		margin-left: 100%;
+		top: 0;
+	}*/
+}
+
+#utility-menu>ul li:hover > ul { 
+  bottom: auto;
+  top: 100%; 
+}
+
+
+.menu-button {
+	display: none;
+}
+
+#utility-menu {
+  @include box-shadow(3px 4px 18px rgba($black,.22));
+  @include transition-property(top);
+  @include transition-duration(0.8s);
+  top: 0;
+  position: fixed;
+  width: 100%;
+  border-left: 0;
+  border-right: 0;
+  .menu {
+    height: 34px;
+    &>li ul {
+      border: 0;
+      li {
+        background-color: rgba($white, 0.9);
+        border-top: 1px solid rgba($black, .26);
+        border-bottom: 1px solid rgba($really-light-grey, .26);
+        border-right: 0;
+        a, span { padding-left: $default-padding; }
+      }
+    }
+  }
+  .social-icons {
+    border: 0;
+    margin-left: $small-padding;
+  }
+  &.hidden {
+    top: -34px;
+    .toggle-button {
+      clear: both;
+      display: block;
+      height: 8px;
+      background-color: $white;
+      text-align: center;
+      border-top: 1px solid $really-light-grey;
+      .arrow-down {
+        width: 0; 
+        height: 0;
+        margin: 0 auto;
+        position: relative;
+        bottom: -7px;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-top: 12px solid $white;
+        .arrow {
+          @include sprites-sprite(utility-menu-arrow);
+          width: sprites-sprite-width(utility-menu-arrow);
+          height: sprites-sprite-width(utility-menu-arrow);
+          top: -14px;
+          left: -6px;
+          position: absolute;
+        }
+      }
+    }
+    &:hover {
+      top: 0;
+      .toggle-button {
+        //display: none;
+      }
+    }
+  }
+  // Ensure the menu is above all page content.
+  z-index: 1000;
+
+  h2,h3 { 
+    display: none;
+  }
+  
+  &, a {
+    color: $grey;
+  }
+
+  ul {
+    float: left;
+    li {
+      border-right: 1px solid $really-light-grey;
+      border-top: none;
+      border-bottom: none;
+      float: left;
+
+      a,
+      span {
+        font-size: 14px;
+        line-height: 14px;
+        display: block;
+        padding-bottom: $small-padding;
+        padding-left: $small-padding;
+        padding-right: $small-padding;
+        padding-top: $small-padding;
+      }
+
+    }
+
+  }
+  .social-icons {
+    float: left;
+  }
+}
+
+#main-menu {
+  @include box-shadow(0 -5px 24px rgba($black,.41));
+  @include transition-property(bottom);
+  @include transition-duration(0.8s);
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 9100;
+  background-image: url(../images/main-menu-texture.jpg);
+  background-attachment: top left; 
+  background-repeat: repeat-x;
+  h2,h3 { 
+    display: none;
+  }
+
+  &>ul>li>a:hover {
+    background-color: rgba($black, 0.13);
+  }
+
+  &>ul>li>a:active, &>ul>li>a.active-trail {
+    @include box-shadow(inset 0 0 23px rgba($black,.47));
+  }
+
+  &.hidden {
+    bottom: -48px;
+    .toggle-button {
+      display: block;
+      height: 8px;
+      background-color: $charcoal;
+      text-align: center;
+      border-bottom: 1px solid rgba($black, .26);
+      .arrow-up {
+        width: 0; 
+        height: 0;
+        margin: 0 auto;
+        position: relative;
+        top: -12px;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-bottom: 12px solid $charcoal;
+        .arrow {
+          @include sprites-sprite(main-menu-arrow);
+          width: sprites-sprite-width(main-menu-arrow);
+          height: sprites-sprite-width(main-menu-arrow);
+          top: 8px;
+          left: -6px;
+          position: absolute;
+        }
+      }
+    }
+    &:hover {
+      bottom: 0;
+    }
+  }
+  
+  &>ul {
+    display: block;
+    width: 100%;
+    &>li {
+      display: block;
+      float: left;
+      width: 14.28%;
+      position: relative;
+      text-align: center;
+      border-left: 1px solid rgba($light-grey, .26);
+      border-right: 1px solid rgba($black, .26);
+      &.first {
+        border-left: 0;
+      }
+      &.last {
+        border-right: 0;
+      }
+      a, span {
+        border-top: none;
+        border-bottom: none;
+      }
+      &>ul {
+        li {
+          background-color: rgba($charcoal,0.9);
+          a, span {
+            padding: $really-small-padding $default-padding;
+            text-align: left;
+            border-bottom: 1px solid rgba($light-grey, 0.20);
+            border-top: 1px solid rgba($charcoal, 0.46);
+            &:hover {
+              background-color: rgba($black,0.4);
+              color: $aqua;
+            }
+          }
+        }
+      }
+      &.last {
+        border-right:none;
+      }
+      a,
+      span {
+        display: block;
+        padding-bottom: $default-padding;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: $default-padding;
+      }
+    }
+
+  }
+
+}
+
+#sub-menu {
+  @include box-shadow(0 -3px 18px rgba($black,.41));
+  text-align: center;
+  bottom: 48px;
+  height: 40px;
+  border-bottom: 6px solid $really-light-grey;
+  position: fixed;
+  width: 100%;
+  z-index: 5999;
+  background-image: url(../images/sub-menu-texture.jpg);
+  background-attachment: top left; 
+  background-repeat: repeat-x;
+
+  h2,h3 { 
+    display: none;
+  }
+  
+  &>ul {
+    @include pie-clearfix();
+    display: inline-block;
+    border-right: 1px solid rgba($black, .26);
+    border-left: 1px solid rgba($really-light-grey, .26);
+    &>li {
+      float: left;
+      position: relative;
+      text-align: center;
+      a, span {
+        border-top: none;
+        border-bottom: none;
+        border-left: 1px solid rgba($black, .26);
+        border-right: 1px solid rgba($really-light-grey, .26);
+        display: block;
+        font-size: $base-font-size;
+        line-height: $base-font-size;
+        padding: $small-padding;
+        overflow: none;
+        position: relative;
+        &:hover:before, &:hover:after, &.active-trail:before, &.active-trail:after{
+          content: "\0020";
+          display: block;
+          position: absolute;
+          width: 1px;
+          top:0;
+          height: 100%; /* when 0 no shadow is displayed*/
+          box-shadow: $black 0 0px 40px 3px;
+        }
+
+        &:hover:before, &.active-trail:before { left: -1px}
+        &:hover:after, &.active-trail:after { right: -1px} 
+      }
+    }
+
+  }
+
+}
+

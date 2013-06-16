@@ -1,0 +1,189 @@
+.node-type-logo-slider {
+  background-color: $really-light-grey;
+  margin-top: 0;
+
+  #page-title h1 {
+    @include type-with-color(header-1, $white);
+
+    text-transform: uppercase;
+    margin-left: $default-margin;
+    margin-right: $default-margin;
+    margin-bottom: 25px;
+    margin-top: 0;
+  }
+
+  .panels-flexible-row {
+    padding: 0;
+  }
+
+  .panels-flexible-region {
+    width: 100%;
+  }
+
+  .page-top-area {
+    padding-top: 60px;
+    background-color: rgba($black, 0.4);
+  }
+
+  #page-description {
+    margin-left: $default-margin;
+    margin-right: $default-margin;
+    margin-top: -20px;
+    @include type-with-color(body,$white);
+    max-width: 380px;
+  }
+
+  #sub-menu, #toggle-sub-menu {
+    display: none;
+  }
+  .panel-separator {
+    display: none;
+  }
+  #tab-menu {
+    text-align: center;
+    height: 28px;
+    display: block;
+    ul {
+      @include pie-clearfix();
+      display: inline-block;
+      li {
+        float: left;
+        line-height: 2em;
+        margin-left: $really-small-padding;
+        &.first {
+          margin-left: 0;
+        }
+        a {
+          @include type-with-color(action-button,$white);
+          background-color: $charcoal;
+          text-transform: uppercase;
+          padding: $really-small-padding;
+          &:hover, &.active-trail {
+            background-color: $red;
+          }
+        }
+      }
+    }
+  }
+
+  .field-collection-container {
+    position: relative;
+    margin: 0 0 10px 0;
+    .field-name-field-logos {
+      height:110px;
+      @include box-shadow(0 0 49px rgba($black,.27));
+      line-height: 110px;
+      overflow: hidden;
+      background-color: rgba($white,0.9);
+      .logo-items {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        .logo-item {
+          float:left;
+          height:100%;
+          padding-left: 40px;
+          padding-right: 40px;
+          text-align: center;
+          cursor: pointer;
+          .image {
+            display: table-cell;
+            text-align: center;
+            img {
+              @include opacity(.4);
+              vertical-align: middle;
+            }
+            &:hover img {
+              @include opacity(.9);
+            }
+          }
+          .description {
+            display:none;
+          }
+          &.active {
+            @include box-shadow(inset 0 0 23px rgba($black,.27));
+            .image img {
+              @include opacity(1);
+            }
+          }
+        }
+      }
+      .prev-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 80px;
+          height: 110px;
+          text-align: right;
+          display: table-cell;
+          text-align: center;
+          z-index: 9007;
+          .prev {
+            display: inline-block;
+            vertical-align: middle;
+            @include sprites-sprite(logo-slider-left-arrow);
+            width: sprites-sprite-width(logo-slider-left-arrow);
+            height: sprites-sprite-height(logo-slider-left-arrow);
+          }
+          &.disabled {
+            display:none;
+          }
+        }
+        .next-container {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 80px;
+          height: 100%;
+          display: table-cell;
+          text-align: center;
+          vertical-align: middle;
+          z-index: 9007;
+          .next {
+            display: inline-block;
+            vertical-align: middle;
+            @include sprites-sprite(logo-slider-right-arrow);
+            width: sprites-sprite-width(logo-slider-right-arrow);
+            height: sprites-sprite-height(logo-slider-right-arrow);
+          }
+          &.disabled {
+            display:none;
+          }
+        }
+    }
+    .current-description {
+      text-align: center;
+      position: relative;
+      z-index: 9005;
+      .description {
+        padding: $default-margin;
+        @include type(body-long-text);
+        line-height: 18px;
+        text-align: left;
+        display: none;
+        top:0;
+        border-top: 1px solid $really-light-grey;
+        background: rgba($white,0.9);
+        .title {
+          @include type(header-3);
+          color: $aqua;
+          border-bottom: 1px solid $really-light-grey;
+          padding-bottom: $small-padding;
+          margin-bottom: $default-padding;
+        }
+        p:last-child {
+          margin-bottom: 0;
+        }
+        a.action {
+          @include type-with-color(action-button,$white);
+          background-color: $red;
+          text-transform: uppercase;
+          padding: $really-small-padding $small-padding;
+          position: absolute;
+          top: 100%;
+          right: $small-padding;
+        }
+      }
+    }
+  }
+}
